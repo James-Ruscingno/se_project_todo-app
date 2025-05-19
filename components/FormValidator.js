@@ -1,16 +1,15 @@
 class FormValidator {
   constructor(settings, formEl) {
-    this._inputSelector = settings._inputSelector;
-    this._submitButtonSelector = settings._submitButtonSelector;
+    this._inputSelector = settings.inputSelector;
+    this._submitButtonSelector = settings.submitButtonSelector;
     this._errorClass = settings.errorClass;
-    this._inputErrorClass = settings._inputErrorClass;
-    this._inactiveButtonClass = settings._inactiveButtonClass;
+    this._inputErrorClass = settings.inputErrorClass;
+    this._inactiveButtonClass = settings.inactiveButtonClass;
     this._formEl = formEl;
 
     this._inputList = Array.from(this._formEl.querySelectorAll(this._inputSelector));
     this._buttonElement = this._formEl.querySelector(this._submitButtonSelector);
 
-    console.log("Submit button:", this._buttonElement);
   }
 
   _showInputError(inputElement, errorMessage) {
@@ -68,6 +67,7 @@ class FormValidator {
   }
 
   resetValidation() {
+    this._formEl.reset();
   this._inputList.forEach((inputElement) => {
     this._hideInputError(inputElement);
   });
